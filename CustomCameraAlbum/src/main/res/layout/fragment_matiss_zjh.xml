@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  Copyright 2017 Zhihu Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?colorPrimary"
+        android:elevation="4dp"
+        android:theme="?toolbar"
+        tools:targetApi="lollipop">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:foreground="?selectableItemBackground">
+
+            <ImageView
+                android:id="@+id/imgClose"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/z_multi_library_delete_button"
+                android:tint="?attr/album.element.color"
+                app:srcCompat="@drawable/back_album" />
+
+
+            <TextView
+                android:id="@+id/buttonApply"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="end"
+                android:gravity="end"
+                android:padding="16dp"
+                android:textColor="?attr/album.element.color"
+                android:textSize="13sp" />
+
+
+            <TextView
+                android:id="@+id/selectedAlbum_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignLeft="@id/imgClose"
+                android:layout_alignRight="@id/buttonApply"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:padding="16dp"
+                android:textColor="?attr/album.element.color"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <FrameLayout
+        android:id="@+id/bottomToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?attr/bottomToolbar.bg"
+        tools:targetApi="lollipop">
+
+        <TextView
+            android:id="@+id/selectedAlbum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:drawableEnd="@drawable/ic_album_list_up"
+            android:drawableRight="@drawable/ic_album_list_up"
+            android:drawablePadding="4dp"
+            android:foreground="?selectableItemBackground"
+            android:padding="16dp"
+            android:tag="hideAlbumList"
+            android:textColor="?attr/bottomToolbar.apply.textColor"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:id="@+id/originalLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:foreground="?selectableItemBackground"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:visibility="visible"
+            tools:showIn="@layout/fragment_matiss_zjh">
+
+            <com.android.customcameraalbum.album.widget.CheckRadioView
+                android:id="@+id/original"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@drawable/ic_radio_button_unchecked_white_24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:enabled="true"
+                android:paddingStart="4dp"
+                android:paddingLeft="4dp"
+                android:text="@string/z_multi_library_button_original"
+                android:textColor="?attr/bottomToolbar.preview.textColor"
+                android:textSize="14sp"
+                tools:ignore="RtlSymmetry" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/buttonPreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center"
+            android:foreground="?selectableItemBackground"
+            android:padding="16dp"
+            android:text="@string/z_multi_library_button_preview"
+            android:textColor="?attr/bottomToolbar.preview.textColor"
+            android:textSize="14sp" />
+
+
+    </FrameLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/hsvPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottomToolbar"
+        android:background="#D71E1E"
+        android:scrollbars="none"
+        android:visibility="gone"
+        tools:ignore="HardcodedText">
+
+        <LinearLayout
+            android:id="@+id/llPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+
+    </HorizontalScrollView>
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/hsvPhoto"
+        android:layout_below="@id/toolbar"
+        android:visibility="visible" />
+
+    <FrameLayout
+        android:id="@+id/emptyView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/emptyViewContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableTop="?attr/album.emptyView"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:text="@string/z_multi_library_empty_text"
+            android:textColor="?attr/album.emptyView.textColor"
+            android:textSize="16sp" />
+
+    </FrameLayout>
+</RelativeLayout>

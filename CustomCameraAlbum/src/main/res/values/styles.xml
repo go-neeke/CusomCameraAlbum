@@ -1,0 +1,177 @@
+<resources>
+    <!-- region ===================================== Theme Blue ===================================== -->
+
+    <style name="AppTheme.Blue" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/blue_primary</item>
+        <item name="colorPrimaryDark">@color/blue_primary_dark</item>
+        <item name="toolbar">@style/Toolbar.Blue</item>
+        <item name="album.dropdown.title.color">@color/blue_album_dropdown_title_text</item>
+        <item name="album.dropdown.count.color">@color/blue_album_dropdown_count_text</item>
+        <item name="album.element.color">@android:color/white</item>
+        <item name="album.thumbnail.placeholder">@color/blue_album_dropdown_thumbnail_placeholder
+        </item>
+        <item name="album.emptyView">@drawable/ic_empty_blue</item>
+        <item name="album.emptyView.textColor">@color/blue_album_empty_view</item>
+        <item name="item.placeholder">@color/blue_item_placeholder</item>
+        <item name="item.checkCircle.backgroundColor">@color/blue_item_checkCircle_backgroundColor
+        </item>
+        <item name="item.checkCircle.borderColor">@color/blue_item_checkCircle_borderColor</item>
+        <item name="page.bg">@color/blue_page_bg</item>
+        <item name="bottomToolbar.bg">@color/blue_bottom_toolbar_bg</item>
+        <item name="bottomToolbar.preview.textColor">@color/blue_bottom_toolbar_preview</item>
+        <item name="bottomToolbar.apply.textColor">@color/blue_bottom_toolbar_apply</item>
+        <item name="preview.bottomToolbar.back.textColor">
+            @color/blue_preview_bottom_toolbar_back_text
+        </item>
+        <item name="preview.bottomToolbar.apply.textColor">
+            @color/blue_preview_bottom_toolbar_apply
+        </item>
+        <item name="listPopupWindowStyle">@style/Popup.Blue</item>
+        <item name="capture.textColor">@color/blue_capture</item>
+        <item name="android:windowIsTranslucent">false</item> <!-- 如果设置为true,api 26会闪退 -->
+        <item name="click.long.button.round.border">#ffffffff</item>
+        <item name="click.long.button.inner.circle.in.operation">@color/blue_primary</item>
+        <item name="click.long.button.inner.circle.no.operation">#99ffffff</item>
+    </style>
+
+    <style name="Toolbar.Blue" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    </style>
+
+    <style name="Popup.Blue" parent="Widget.AppCompat.Light.ListPopupWindow">
+        <item name="android:popupBackground">@color/blue_album_popup_bg</item>
+    </style>
+
+    <!-- endregion ===================================== Theme Blue ===================================== -->
+
+    <!-- region ===================================== Theme Dracula  ===================================== -->
+
+    <style name="AppTheme.Dracula" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/dracula_primary</item>
+        <item name="colorPrimaryDark">@color/dracula_primary_dark</item>
+        <item name="toolbar">@style/Toolbar.Dracula</item>
+        <item name="album.dropdown.title.color">@color/dracula_album_dropdown_title_text</item>
+        <item name="album.dropdown.count.color">@color/dracula_album_dropdown_count_text</item>
+        <item name="album.element.color">@android:color/white</item>
+        <item name="album.thumbnail.placeholder">
+            @color/dracula_album_dropdown_thumbnail_placeholder
+        </item>
+        <item name="album.emptyView">@drawable/ic_empty_dracula</item>
+        <item name="album.emptyView.textColor">@color/dracula_album_empty_view</item>
+        <item name="item.placeholder">@color/dracula_item_placeholder</item>
+        <item name="item.checkCircle.backgroundColor">
+            @color/dracula_item_checkCircle_backgroundColor
+        </item>
+        <item name="item.checkCircle.borderColor">@color/dracula_item_checkCircle_borderColor</item>
+        <item name="page.bg">@color/dracula_page_bg</item>
+        <item name="bottomToolbar.bg">@color/dracula_bottom_toolbar_bg</item>
+        <item name="bottomToolbar.preview.textColor">@color/dracula_bottom_toolbar_preview</item>
+        <item name="bottomToolbar.apply.textColor">@color/dracula_bottom_toolbar_apply</item>
+        <item name="preview.bottomToolbar.back.textColor">
+            @color/dracula_preview_bottom_toolbar_back_text
+        </item>
+        <item name="preview.bottomToolbar.apply.textColor">
+            @color/dracula_preview_bottom_toolbar_apply
+        </item>
+        <item name="android:listPopupWindowStyle">@style/Popup.Dracula</item>
+        <item name="listPopupWindowStyle">@style/Popup.Dracula</item>
+        <item name="capture.textColor">@color/dracula_capture</item>
+        <item name="android:windowIsTranslucent">false</item> <!-- 如果设置为true,api 26会闪退 -->
+        <!-- 录制的按钮样式 -->
+        <item name="click.long.button.round.border">#ffffffff</item> <!-- 按钮外圈颜色 -->
+        <item name="click.long.button.inner.circle.in.operation">@color/dracula_primary
+        </item> <!-- 按钮内圈长按中的颜色 -->
+        <item name="click.long.button.inner.circle.no.operation">#99ffffff</item> <!-- 按钮内圈默认的颜色 -->
+    </style>
+
+    <style name="Toolbar.Dracula" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    </style>
+
+    <style name="Popup.Dracula" parent="Widget.AppCompat.ListPopupWindow">
+        <item name="android:popupBackground">@color/dracula_album_popup_bg</item>
+    </style>
+
+    <!-- endregion ===================================== Theme Dracula ===================================== -->
+
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">#FF5151</item>
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">#000000</item>
+        <!-- Used for the background -->
+        <item name="android:background">#FFFFFF</item>
+    </style>
+
+    <declare-styleable name="CircularProgressButton">
+        <attr name="cpb_selectorIdle" format="reference" />
+        <attr name="cpb_selectorComplete" format="reference" />
+        <attr name="cpb_selectorError" format="reference" />
+        <attr name="cpb_textComplete" format="string" />
+        <attr name="cpb_textIdle" format="string" />
+        <attr name="cpb_textError" format="string" />
+        <attr name="cpb_textProgress" format="string" />
+        <attr name="cpb_colorProgress" format="color" />
+        <attr name="cpb_colorIndicator" format="color" />
+        <attr name="cpb_colorIndicatorBackground" format="color" />
+        <attr name="cpb_iconError" format="reference" />
+        <attr name="cpb_iconComplete" format="reference" />
+        <attr name="cpb_cornerRadius" format="dimension" />
+        <attr name="cpb_paddingProgress" format="dimension" />
+    </declare-styleable>
+
+
+    <!-- endregion ===================================== Theme Dracula ===================================== -->
+
+
+    <style name="AppTheme.Zaihan" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/zaihan_primary</item>
+        <item name="colorPrimaryDark">@color/zaihan_primary_dark</item>
+        <item name="toolbar">@style/Toolbar.Dracula</item>
+        <item name="album.dropdown.title.color">@color/zaihan_album_dropdown_title_text</item>
+        <item name="album.dropdown.count.color">@color/zaihan_album_dropdown_count_text</item>
+        <item name="album.element.color">@color/black</item>
+        <item name="album.thumbnail.placeholder">
+            @color/zaihan_album_dropdown_thumbnail_placeholder
+        </item>
+        <item name="album.emptyView">@drawable/ic_empty_dracula</item>
+        <item name="album.emptyView.textColor">@color/zaihan_album_empty_view</item>
+        <item name="item.placeholder">@color/zaihan_item_placeholder</item>
+        <item name="item.checkCircle.backgroundColor">
+            @color/zaihan_item_checkCircle_backgroundColor
+        </item>
+        <item name="item.checkCircle.borderColor">@color/zaihan_item_checkCircle_borderColor</item>
+        <item name="page.bg">@color/zaihan_page_bg</item>
+        <item name="bottomToolbar.bg">@color/zaihan_bottom_toolbar_bg</item>
+        <item name="bottomToolbar.preview.textColor">@color/zaihan_bottom_toolbar_preview_text
+        </item>
+        <item name="bottomToolbar.apply.textColor">@color/zaihan_bottom_toolbar_apply_text</item>
+        <item name="preview.bottomToolbar.back.textColor">
+            @color/zaihan_preview_bottom_toolbar_back_text
+        </item>
+        <item name="preview.bottomToolbar.apply.textColor">
+            @color/zaihan_preview_bottom_toolbar_apply_text
+        </item>
+        <item name="android:listPopupWindowStyle">@style/Popup.Dracula</item>
+        <item name="listPopupWindowStyle">@style/Popup.Dracula</item>
+        <item name="capture.textColor">@color/zaihan_capture</item>
+        <item name="android:windowIsTranslucent">false</item> <!-- 如果设置为true,api 26会闪退 -->
+        <!-- 录制的按钮样式 -->
+        <item name="click.long.button.round.border">#99ffffff</item> <!-- 按钮外圈颜色 -->
+        <item name="click.long.button.inner.circle.in.operation">
+            @color/zaihan_item_checkCircle_borderColor
+        </item> <!-- 按钮内圈长按中的颜色 -->
+        <item name="click.long.button.inner.circle.no.operation">#ffffffff</item> <!-- 按钮内圈默认的颜色 -->
+
+    </style>
+
+    <style name="Toolbar.Zaihan" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    </style>
+
+    <style name="Popup.Zaihan" parent="Widget.AppCompat.ListPopupWindow">
+        <item name="android:popupBackground">@color/zaihan_album_popup_bg</item>
+        <item name="android:popupElevation">0dp</item>
+    </style>
+
+</resources>
