@@ -54,7 +54,6 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompatSdkVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintlayoutSdkVersion"
     implementation "com.google.android.material:material:$rootProject.ext.androidMaterialSdkVersion"
-    implementation 'com.github.go-neeke:android-video-trimmer:2.0.7'
 
 
 }
