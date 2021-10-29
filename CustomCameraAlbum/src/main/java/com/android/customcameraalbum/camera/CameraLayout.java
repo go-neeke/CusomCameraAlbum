@@ -77,6 +77,7 @@ import com.android.customcameraalbum.common.listener.VideoEditListener;
 import com.android.customcameraalbum.common.utils.MediaStoreCompat;
 import com.android.customcameraalbum.utils.StatusBarUtils;
 import com.android.customcameraalbum.common.utils.ThreadUtils;
+
 import it.sephiroth.android.library.imagezoom.ImageViewTouch;
 
 import static com.android.customcameraalbum.album.model.SelectedItemCollection.COLLECTION_IMAGE;
@@ -641,11 +642,33 @@ public class CameraLayout extends RelativeLayout {
                 if (mState == STATE_VIDEO) {
                     File newSectionVideo = mVideoMediaStoreCompat.createFile(1, true);
                     mNewSectionVideoPath = newSectionVideo.getPath();
+
+                    mCameraSpec.videoEditCoordinator.setVideoMergeListener(new VideoEditListener() {
+                        @Override
+                        public void onFinish() {
+                            fragment.confirmVideo(Uri.fromFile(newSectionVideo));
+                        }
+
+                        @Override
+                        public void onProgress(int progress, long progressTime) {
+                        }
+
+                        @Override
+                        public void onCancel() {
+                            Log.d(TAG, "onCancel");
+                        }
+
+                        @Override
+                        public void onError(String message) {
+                            Log.d(TAG, "onError" + message);
+                        }
+                    });
+
                     mCameraSpec.videoEditCoordinator.merge(mNewSectionVideoPath, mVideoPaths,
                             mContext.getCacheDir().getPath() + File.separator + "cam.txt");
 //                    fragment.confirmVideo(newSectionVideo);
 
-                    fragment.confirmVideo(Uri.fromFile(newSectionVideo));
+
                 } else {
                     ArrayList<BitmapData> bitmapDatas = new ArrayList<BitmapData>();
                     for (Map.Entry<Integer, BitmapData> entry : mCaptureBitmaps.entrySet()) {
@@ -660,9 +683,29 @@ public class CameraLayout extends RelativeLayout {
             public void preview() {
                 File newSectionVideo = mVideoMediaStoreCompat.createFile(1, true);
                 mNewSectionVideoPath = newSectionVideo.getPath();
+                mCameraSpec.videoEditCoordinator.setVideoMergeListener(new VideoEditListener() {
+                    @Override
+                    public void onFinish() {
+                        fragment.goVideoTrim(Uri.fromFile(newSectionVideo));
+                    }
+
+                    @Override
+                    public void onProgress(int progress, long progressTime) {
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Log.d(TAG, "onCancel");
+                    }
+
+                    @Override
+                    public void onError(String message) {
+                        Log.d(TAG, "onError" + message);
+                    }
+                });
                 mCameraSpec.videoEditCoordinator.merge(mNewSectionVideoPath, mVideoPaths,
                         mContext.getCacheDir().getPath() + File.separator + "cam.txt");
-                fragment.goVideoTrim(Uri.fromFile(newSectionVideo));
+
             }
 
         });
@@ -673,27 +716,27 @@ public class CameraLayout extends RelativeLayout {
      * 视频编辑后的事件，目前 有分段录制后合并、压缩视频
      */
     private void initVideoEditListener() {
-        if (mCameraSpec.videoEditCoordinator != null) {
-            mCameraSpec.videoEditCoordinator.setVideoMergeListener(new VideoEditListener() {
-                @Override
-                public void onFinish() {
-                }
-
-                @Override
-                public void onProgress(int progress, long progressTime) {
-                }
-
-                @Override
-                public void onCancel() {
-                    Log.d(TAG, "onCancel");
-                }
-
-                @Override
-                public void onError(String message) {
-                    Log.d(TAG, "onError" + message);
-                }
-            });
-        }
+//        if (mCameraSpec.videoEditCoordinator != null) {
+//            mCameraSpec.videoEditCoordinator.setVideoMergeListener(new VideoEditListener() {
+//                @Override
+//                public void onFinish() {
+//                }
+//
+//                @Override
+//                public void onProgress(int progress, long progressTime) {
+//                }
+//
+//                @Override
+//                public void onCancel() {
+//                    Log.d(TAG, "onCancel");
+//                }
+//
+//                @Override
+//                public void onError(String message) {
+//                    Log.d(TAG, "onError" + message);
+//                }
+//            });
+//        }
     }
 
     /**
