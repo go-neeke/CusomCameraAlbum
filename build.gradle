@@ -2,7 +2,7 @@
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin:'maven'
 
-group='com.github.zhongjhATC'
+group='com.github.go-neeke'
 
 buildscript {
 
