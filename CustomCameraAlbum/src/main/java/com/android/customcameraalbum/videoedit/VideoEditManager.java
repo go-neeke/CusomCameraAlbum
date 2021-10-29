@@ -52,7 +52,7 @@ public class VideoEditManager extends VideoEditCoordinator {
             e.printStackTrace();
         }
 
-        String commands = "ffmpeg -y -f concat -safe 0 -i " + file.getPath() + " -c copy " + newPath;
+        String commands = "-y -f concat -safe 0 -i " + file.getPath() + " -c copy " + newPath;
 
         mMyRxFfmpegMergeSubscriber = new MyRxFfmpegSubscriber(mVideoMergeListener);
 //
@@ -62,7 +62,7 @@ public class VideoEditManager extends VideoEditCoordinator {
 //                .subscribe(mMyRxFfmpegMergeSubscriber);
 
         new Thread(() -> {
-            int result = FFmpeg.execute(commands);
+            int result = FFmpeg.execute(commands.split(" "));
             if (result == 0) {
                 mMyRxFfmpegMergeSubscriber.onFinish();
 
@@ -78,7 +78,7 @@ public class VideoEditManager extends VideoEditCoordinator {
 
     @Override
     public void compress(String oldPath, String compressPath) {
-        String commands = "ffmpeg -y -i " + oldPath + " -b 2097k -r 30 -vcodec libx264 -preset superfast " + compressPath;
+        String commands = "-y -i " + oldPath + " -b 2097k -r 30 -vcodec libx264 -preset superfast " + compressPath;
 
         mMyRxFfmpegCompressSubscriber = new MyRxFfmpegSubscriber(mVideoCompressListener);
 
@@ -86,13 +86,13 @@ public class VideoEditManager extends VideoEditCoordinator {
         new Thread(() -> {
             int result = FFmpeg.execute(commands);
             if (result == 0) {
-                mMyRxFfmpegMergeSubscriber.onFinish();
+                mMyRxFfmpegCompressSubscriber.onFinish();
 
             } else if (result == 255) {
                 LogMessage.v("Command cancelled");
-                mMyRxFfmpegMergeSubscriber.onCancel();
+                mMyRxFfmpegCompressSubscriber.onCancel();
             } else {
-                mMyRxFfmpegMergeSubscriber.onError("Faild");
+                mMyRxFfmpegCompressSubscriber.onError("Faild");
             }
         }).start();
     }
