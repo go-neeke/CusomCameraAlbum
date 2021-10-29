@@ -17,7 +17,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -65,7 +65,7 @@ dependencies {
     // 自制按钮进度 https://github.com/zhongjhATC/CircularProgressView
     api 'com.github.zhongjhATC:CircularProgressView:1.7'
 
-    implementation 'com.github.microshow:RxFFmpeg:4.9.0'
+    implementation 'com.github.microshow:RxFFmpeg:4.9.0-lite'
 
     // luban压缩图片
     implementation 'top.zibin:Luban:1.1.8'
