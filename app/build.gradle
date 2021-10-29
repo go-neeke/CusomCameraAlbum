@@ -1,0 +1,87 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+
+    defaultConfig {
+        applicationId "com.android.customcameraalbum"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true // 添加多密度矢量图形
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+    }
+
+    lintOptions {
+        disable 'GoogleAppIndexingWarning'
+        baseline file("lint-baseline.xml")
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // 基本库
+    implementation "androidx.recyclerview:recyclerview:$rootProject.ext.recyclerviewSdkVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompatSdkVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintlayoutSdkVersion"
+    implementation "androidx.documentfile:documentfile:$rootProject.ext.documentfileSdkVersion"
+
+    implementation 'com.github.zhongjhATC:Retrofit2Rxjava2Download:1.0.5'
+    implementation "com.google.android.material:material:$rootProject.ext.androidMaterialSdkVersion"
+    implementation 'it.sephiroth.android.library.imagezoom:imagezoom:+'
+
+    // 图片
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
+    // 捕获异常
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+
+    // 检测内存泄漏 http://www.liaohuqiu.net/cn/posts/leak-canary-read-me/ https://github.com/square/leakcanary
+    implementation 'com.squareup.leakcanary:leakcanary-android:1.6.2' // 2.6以上版本会报错
+    implementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.2'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    api 'com.otaliastudios:cameraview:2.7.1'
+
+    // 自制按钮进度 https://github.com/zhongjhATC/CircularProgressView
+    api 'com.github.zhongjhATC:CircularProgressView:1.7'
+
+    // luban压缩图片
+    implementation 'top.zibin:Luban:1.1.8'
+    implementation 'com.github.go-neeke:android-video-trimmer:2.0.7'
+
+}
