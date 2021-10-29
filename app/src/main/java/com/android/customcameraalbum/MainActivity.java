@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
         if (!mIsInit) {
             mVpPager = findViewById(R.id.viewPager);
             mTabLayout = findViewById(R.id.tableLayout);
-            adapterViewPager = new MyPagerAdapter(getSupportFragmentManager(), BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, mSpec);
+//            adapterViewPager = new MyPagerAdapter(getSupportFragmentManager(), BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, mSpec);
             mVpPager.setAdapter(adapterViewPager);
             mVpPager.setOffscreenPageLimit(3);
             // 根据配置默认选第几个
@@ -393,77 +393,77 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public class MyPagerAdapter extends FragmentPagerAdapter {
-
-        int numItems;// 数量
-
-        ArrayList<String> mTitles = new ArrayList<>(); // 标题
-
-        public MyPagerAdapter(@NonNull FragmentManager fm, int behavior, GlobalSpec mSpec) {
-            super(fm, behavior);
-
-            int defaultPositionType = ALBUM;// 默认选择谁的类型
-
-            if (mSpec.defaultPosition == RECORDER) {
-                // 默认语音
-                defaultPositionType = RECORDER;
-            } else if (mSpec.defaultPosition == CAMERA) {
-                // 默认录制
-                defaultPositionType = CAMERA;
-            }
-
-            // 根据相关配置做相应的初始化，相册生效
-            if (SelectableUtils.albumValid()) {
-                numItems++;
-                mTitles.add(getString(R.string.z_multi_library_album));
-            }
-            // 相机生效
-            if (SelectableUtils.cameraValid()) {
-                if (defaultPositionType == CAMERA) {
-                    mDefaultPosition = numItems;
-                }
-                numItems++;
-                mTitles.add(getString(R.string.z_multi_library_take_photos));
-            }
-            // 录音生效
-            if (SelectableUtils.recorderValid()) {
-                if (defaultPositionType == RECORDER) {
-                    mDefaultPosition = numItems;
-                }
-                numItems++;
-                mTitles.add(getString(R.string.z_multi_library_sound_recording));
-            }
-
-        }
-
-        // Returns total number of pages
-        @Override
-        public int getCount() {
-            return numItems;
-        }
-
-        // Returns the fragment to display for that page
-        @NonNull
-        @Override
-        public Fragment getItem(int position) {
-            if (mTitles.get(position).equals(getString(R.string.z_multi_library_album))) {
-                if (adapterViewPager.getCount() <= 1) {
-                    return MatissFragment.newInstance(0);
-                }
-                return MatissFragment.newInstance(50);
-            } else if (mTitles.get(position).equals(getString(R.string.z_multi_library_sound_recording))) {
-                return SoundRecordingFragment.newInstance();
-            } else {
-                return CameraFragment.newInstance();
-            }
-        }
-
-        // Returns the page title for the top indicator
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mTitles.get(position);
-        }
-
-    }
+//    public class MyPagerAdapter extends FragmentPagerAdapter {
+//
+//        int numItems;// 数量
+//
+//        ArrayList<String> mTitles = new ArrayList<>(); // 标题
+//
+//        public MyPagerAdapter(@NonNull FragmentManager fm, int behavior, GlobalSpec mSpec) {
+//            super(fm, behavior);
+//
+//            int defaultPositionType = ALBUM;// 默认选择谁的类型
+//
+//            if (mSpec.defaultPosition == RECORDER) {
+//                // 默认语音
+//                defaultPositionType = RECORDER;
+//            } else if (mSpec.defaultPosition == CAMERA) {
+//                // 默认录制
+//                defaultPositionType = CAMERA;
+//            }
+//
+//            // 根据相关配置做相应的初始化，相册生效
+//            if (SelectableUtils.albumValid()) {
+//                numItems++;
+//                mTitles.add(getString(R.string.z_multi_library_album));
+//            }
+//            // 相机生效
+//            if (SelectableUtils.cameraValid()) {
+//                if (defaultPositionType == CAMERA) {
+//                    mDefaultPosition = numItems;
+//                }
+//                numItems++;
+//                mTitles.add(getString(R.string.z_multi_library_take_photos));
+//            }
+//            // 录音生效
+//            if (SelectableUtils.recorderValid()) {
+//                if (defaultPositionType == RECORDER) {
+//                    mDefaultPosition = numItems;
+//                }
+//                numItems++;
+//                mTitles.add(getString(R.string.z_multi_library_sound_recording));
+//            }
+//
+//        }
+//
+//        // Returns total number of pages
+//        @Override
+//        public int getCount() {
+//            return numItems;
+//        }
+//
+//        // Returns the fragment to display for that page
+////        @NonNull
+////        @Override
+////        public Fragment getItem(int position) {
+//////            if (mTitles.get(position).equals(getString(R.string.z_multi_library_album))) {
+//////                if (adapterViewPager.getCount() <= 1) {
+//////                    return MatissFragment.newInstance(0);
+//////                }
+//////                return MatissFragment.newInstance(50);
+//////            } else if (mTitles.get(position).equals(getString(R.string.z_multi_library_sound_recording))) {
+//////                return SoundRecordingFragment.newInstance();
+//////            } else {
+////                return CameraFragment.newInstance();
+//////            }
+////        }
+//
+//        // Returns the page title for the top indicator
+//        @Override
+//        public CharSequence getPageTitle(int position) {
+//            return mTitles.get(position);
+//        }
+//
+//    }
 
 }
