@@ -100,10 +100,10 @@ public class VideoEditManager extends VideoEditCoordinator {
     @Override
     public void onDestroy() {
         if (mMyRxFfmpegMergeSubscriber != null) {
-            mMyRxFfmpegMergeSubscriber.onFinish();
+            mMyRxFfmpegMergeSubscriber.onCancel();
         }
         if (mMyRxFfmpegCompressSubscriber != null) {
-            mMyRxFfmpegCompressSubscriber.onFinish();
+            mMyRxFfmpegCompressSubscriber.onCancel();
         }
     }
 
