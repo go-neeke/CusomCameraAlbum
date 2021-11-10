@@ -67,6 +67,8 @@ public class SelectedItemCollection {
      * 当前选择的所有类型，列表如果包含了图片和视频，就会变成混合类型
      */
     private int mCollectionType = AlbumSpec.getInstance().collectionType;
+    private int mOriginCollectionType = AlbumSpec.getInstance().collectionType;
+
     /**
      * 当前选择的视频数量
      */
@@ -100,6 +102,7 @@ public class SelectedItemCollection {
             }
 
             mCollectionType = AlbumSpec.getInstance().collectionType;
+            mOriginCollectionType = AlbumSpec.getInstance().collectionType;
         }
     }
 
@@ -412,8 +415,14 @@ public class SelectedItemCollection {
      */
     public boolean typeConflict(MultiMedia item) {
         if (item.isImage()) {
+            if (mOriginCollectionType != COLLECTION_UNDEFINED) {
+                return mOriginCollectionType == COLLECTION_VIDEO;
+            }
             return mCollectionType == COLLECTION_VIDEO;
         } else if (item.isVideo()) {
+            if (mOriginCollectionType != COLLECTION_UNDEFINED) {
+                return mOriginCollectionType == COLLECTION_IMAGE;
+            }
             return mCollectionType == COLLECTION_IMAGE;
         }
 
