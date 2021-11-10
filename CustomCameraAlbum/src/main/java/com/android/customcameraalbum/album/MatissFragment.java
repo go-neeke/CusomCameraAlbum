@@ -284,7 +284,6 @@ public class MatissFragment extends Fragment implements AlbumCollection.AlbumCal
                 MultiMedia item = mSelectedCollection.asList().get(0);
                 TrimVideo.activity(String.valueOf(item.getMediaUri()))
                         .setCompressOption(new CompressOption()) //empty constructor for default compress option
-                        .setHideSeekBar(true)
                         .setEnableEdit(!mSelectedCollection.typeConflict(item))
                         .start(this, startForResult);
             } else {
@@ -631,9 +630,9 @@ public class MatissFragment extends Fragment implements AlbumCollection.AlbumCal
             Log.d("A.lee", "mSelectedCollection.getCollectionType()" + mSelectedCollection.getCollectionType());
             TrimVideo.activity(String.valueOf(item.getMediaUri()))
                     .setCompressOption(new CompressOption()) //empty constructor for default compress option
-                    .setHideSeekBar(true)
                     .setEnableEdit(!mSelectedCollection.typeConflict(item))
                     .start(this, startForResult);
+
         } else {
             Intent intent = new Intent(mActivity, AlbumPreviewActivity.class);
             intent.putExtra(AlbumPreviewActivity.EXTRA_ALBUM, album);
