@@ -488,7 +488,9 @@ public class BasePreviewActivity extends AppCompatActivity implements View.OnCli
         intent.putExtra(EXTRA_RESULT_APPLY, apply);
         intent.putExtra(EXTRA_RESULT_IS_EDIT, mIsEdit);
         intent.putExtra(EXTRA_RESULT_ORIGINAL_ENABLE, mOriginalEnable);
-        setResult(Activity.RESULT_OK, intent);
+
+        int resultCode = mAdapter.getmItems().size() > 0 ? Activity.RESULT_OK : Activity.RESULT_CANCELED;
+        setResult(resultCode, intent);
     }
 
     /**
