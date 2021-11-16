@@ -380,14 +380,11 @@ public class BasePreviewActivity extends AppCompatActivity implements View.OnCli
         if (selectedCount == 0) {
             // 禁用
             mViewHolder.buttonApply.setText(R.string.z_multi_library_button_sure_default);
-            mViewHolder.buttonApply.setEnabled(false);
         } else if (selectedCount == 1 && mAlbumSpec.singleSelectionModeEnabled()) {
             // 如果只选择一张或者配置只能选一张，或者不显示数字的时候。启用，不显示数字
             mViewHolder.buttonApply.setText(R.string.z_multi_library_button_sure_default);
-            mViewHolder.buttonApply.setEnabled(true);
         } else {
             // 启用，显示数字
-            mViewHolder.buttonApply.setEnabled(true);
             mViewHolder.buttonApply.setText(getString(R.string.z_multi_library_button_sure, selectedCount));
         }
 
