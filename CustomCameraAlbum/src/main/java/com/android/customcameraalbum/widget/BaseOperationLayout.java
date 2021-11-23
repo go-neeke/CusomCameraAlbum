@@ -396,6 +396,10 @@ public abstract class BaseOperationLayout extends FrameLayout {
         viewHolder.btnClickOrLong.setButtonFeatures(buttonStateBoth);
     }
 
+    public int getButtonFeatures() {
+       return viewHolder.btnClickOrLong.getButtonFeatures();
+    }
+
     /**
      * 设置是否可点击
      */

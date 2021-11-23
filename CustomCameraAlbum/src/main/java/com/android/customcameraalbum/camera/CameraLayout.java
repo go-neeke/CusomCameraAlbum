@@ -748,31 +748,37 @@ public class CameraLayout extends RelativeLayout {
 
             @Override
             public void onPictureTaken(@NonNull PictureResult result) {
-                result.toBitmap(bitmap -> {
-                    // 显示图片
-                    showPicture(bitmap);
-                    // 恢复点击
-                    mViewHolder.rlMain.setChildClickable(true);
-                });
+                if (mViewHolder.pvLayout.getButtonFeatures() != BUTTON_STATE_ONLY_LONG_CLICK) {
+                    result.toBitmap(bitmap -> {
+                        // 显示图片
+                        showPicture(bitmap);
+                        // 恢复点击
+                        mViewHolder.rlMain.setChildClickable(true);
+                    });
+                }
+
                 super.onPictureTaken(result);
             }
 
             @Override
             public void onVideoTaken(@NonNull VideoResult result) {
                 super.onVideoTaken(result);
-                // 判断是否短时间结束
-                if (!mIsShort) {
-                    Log.d(TAG, "onVideoTaken " + result.getFile().getPath());
-                    // 加入视频列表
-                    mVideoPaths.add(result.getFile().getPath());
-                    // 显示当前进度
-                    mViewHolder.pvLayout.setData(mVideoTimes);
-                    // 创建新的file
-                    mVideoFile = mVideoMediaStoreCompat.createFile(1, true);
-                } else {
-                    Log.d(TAG, "onVideoTaken delete " + mVideoFile.getPath());
-                    FileUtil.deleteFile(mVideoFile);
-                    mIsShort = false;
+
+                if (mViewHolder.pvLayout.getButtonFeatures() != BUTTON_STATE_ONLY_CLICK) {
+                    // 判断是否短时间结束
+                    if (!mIsShort) {
+                        Log.d(TAG, "onVideoTaken " + result.getFile().getPath());
+                        // 加入视频列表
+                        mVideoPaths.add(result.getFile().getPath());
+                        // 显示当前进度
+                        mViewHolder.pvLayout.setData(mVideoTimes);
+                        // 创建新的file
+                        mVideoFile = mVideoMediaStoreCompat.createFile(1, true);
+                    } else {
+                        Log.d(TAG, "onVideoTaken delete " + mVideoFile.getPath());
+                        FileUtil.deleteFile(mVideoFile);
+                        mIsShort = false;
+                    }
                 }
             }
 

@@ -571,6 +571,10 @@ public class ClickOrLongButton extends View {
         this.mButtonState = buttonStateBoth;
     }
 
+    public int getButtonFeatures() {
+        return this.mButtonState;
+    }
+
     /**
      * 重置状态
      */
