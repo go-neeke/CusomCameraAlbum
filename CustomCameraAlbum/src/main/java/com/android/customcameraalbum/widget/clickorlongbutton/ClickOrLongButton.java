@@ -264,7 +264,7 @@ public class ClickOrLongButton extends View {
 
 
         // 状态为两者都可以
-        mButtonState = BUTTON_STATE_BOTH;
+//        mButtonState = BUTTON_STATE_BOTH;
     }
 
     /**
