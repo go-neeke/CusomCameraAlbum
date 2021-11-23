@@ -170,11 +170,11 @@ public class ClickOrLongButton extends View {
                         if (mClickOrLongListener != null) {
                             mClickOrLongListener.onLongClick();
                             // 如果禁止点击，那么就轮到长按触发actionDown
-                            if (!mActionDown && mClickOrLongListener != null && mButtonState == BUTTON_STATE_ONLY_LONG_CLICK) {
-                                // 如果禁止点击也不能触发该事件
-                                mClickOrLongListener.actionDown();
-                                mActionDown = true;
-                            }
+//                            if (!mActionDown && mClickOrLongListener != null && mButtonState == BUTTON_STATE_ONLY_LONG_CLICK) {
+//                                // 如果禁止点击也不能触发该事件
+//                                mClickOrLongListener.actionDown();
+//                                mActionDown = true;
+//                            }
                         }
                     }
                 }
