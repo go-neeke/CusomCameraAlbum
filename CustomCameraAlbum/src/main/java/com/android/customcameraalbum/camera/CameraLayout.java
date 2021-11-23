@@ -395,6 +395,7 @@ public class CameraLayout extends RelativeLayout {
                 // 禁用点击功能
                 String tipMsg = getResources().getString(R.string.z_multi_library_long_press_camera);
                 mViewHolder.pvLayout.setTip(tipMsg);
+                mViewHolder.pvLayout.setButtonFeatures(BUTTON_STATE_ONLY_LONG_CLICK);
             } else if (SelectableUtils.getVideoMaxCount() == 0) {
                 // 禁用长按功能
                 String tipMsg = getResources().getString(R.string.z_multi_library_light_touch_take);
@@ -846,7 +847,7 @@ public class CameraLayout extends RelativeLayout {
             mViewHolder.pvLayout.getViewHolder().btnConfirm.setVisibility(View.GONE);
 
             // 恢复长按事件，即重新启用录像
-            mViewHolder.pvLayout.getViewHolder().btnClickOrLong.setButtonFeatures(BUTTON_STATE_BOTH);
+//            mViewHolder.pvLayout.getViewHolder().btnClickOrLong.setButtonFeatures(BUTTON_STATE_BOTH);
 
             // 设置空闲状态
             setState(Constants.STATE_PREVIEW);

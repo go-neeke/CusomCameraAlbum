@@ -59,9 +59,9 @@
 
     <!-- endregion -->
 
-    <string name="z_multi_library_light_touch_take_long_press_camera">눌러서 사진 촬영 및 길게 눌러서 영상 기록</string>
+    <string name="z_multi_library_light_touch_take_long_press_camera">눌러서 사진 촬영 및 길게 눌러서 영상 촬영</string>
     <string name="z_multi_library_light_touch_take">사진 촬영</string>
-    <string name="z_multi_library_long_press_camera">Long press camera</string>
+    <string name="z_multi_library_long_press_camera">길게 눌러서 영상 촬영</string>
     <string name="z_multi_library_long_press_sound_recording">Long press the tape</string>
     <string name="z_multi_library_the_recording_time_is_too_short">The recording time is too short</string>
     <string name="z_multi_library_video_can_only_exist_in_n">Only %1$d video can exist</string>
