@@ -157,6 +157,7 @@ public class ClickOrLongButton extends View {
             Log.d(TAG, "mRecordedTime " + mRecordedTime);
             if (!mActionDown && timeLapse >= 1) {
                 boolean actionDown = mClickOrLongListener != null && (mButtonState == BUTTON_STATE_ONLY_CLICK || mButtonState == BUTTON_STATE_BOTH);
+                Log.d(TAG, "actionDown " + actionDown);
                 if (actionDown) {
                     mClickOrLongListener.actionDown();
                     mActionDown = true;

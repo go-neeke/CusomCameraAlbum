@@ -561,7 +561,10 @@ public class CameraLayout extends RelativeLayout {
                             mClickOrLongListener.onClick();
                         }
                     } else {
-                        Toast.makeText(mContext, getResources().getString(R.string.z_multi_library_the_camera_limit_has_been_reached), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, mContext.getResources().getString(
+                                R.string.z_multi_library_error_over_count_image,
+                                currentMaxSelectable()
+                        ), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -748,14 +751,12 @@ public class CameraLayout extends RelativeLayout {
 
             @Override
             public void onPictureTaken(@NonNull PictureResult result) {
-                if (mViewHolder.pvLayout.getButtonFeatures() != BUTTON_STATE_ONLY_LONG_CLICK) {
-                    result.toBitmap(bitmap -> {
-                        // 显示图片
-                        showPicture(bitmap);
-                        // 恢复点击
-                        mViewHolder.rlMain.setChildClickable(true);
-                    });
-                }
+                result.toBitmap(bitmap -> {
+                    // 显示图片
+                    showPicture(bitmap);
+                    // 恢复点击
+                    mViewHolder.rlMain.setChildClickable(true);
+                });
 
                 super.onPictureTaken(result);
             }
@@ -764,21 +765,19 @@ public class CameraLayout extends RelativeLayout {
             public void onVideoTaken(@NonNull VideoResult result) {
                 super.onVideoTaken(result);
 
-                if (mViewHolder.pvLayout.getButtonFeatures() != BUTTON_STATE_ONLY_CLICK) {
-                    // 判断是否短时间结束
-                    if (!mIsShort) {
-                        Log.d(TAG, "onVideoTaken " + result.getFile().getPath());
-                        // 加入视频列表
-                        mVideoPaths.add(result.getFile().getPath());
-                        // 显示当前进度
-                        mViewHolder.pvLayout.setData(mVideoTimes);
-                        // 创建新的file
-                        mVideoFile = mVideoMediaStoreCompat.createFile(1, true);
-                    } else {
-                        Log.d(TAG, "onVideoTaken delete " + mVideoFile.getPath());
-                        FileUtil.deleteFile(mVideoFile);
-                        mIsShort = false;
-                    }
+                // 判断是否短时间结束
+                if (!mIsShort) {
+                    Log.d(TAG, "onVideoTaken " + result.getFile().getPath());
+                    // 加入视频列表
+                    mVideoPaths.add(result.getFile().getPath());
+                    // 显示当前进度
+                    mViewHolder.pvLayout.setData(mVideoTimes);
+                    // 创建新的file
+                    mVideoFile = mVideoMediaStoreCompat.createFile(1, true);
+                } else {
+                    Log.d(TAG, "onVideoTaken delete " + mVideoFile.getPath());
+                    FileUtil.deleteFile(mVideoFile);
+                    mIsShort = false;
                 }
             }
 
