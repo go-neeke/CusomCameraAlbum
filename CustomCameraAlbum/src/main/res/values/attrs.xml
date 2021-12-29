@@ -17,6 +17,7 @@
     <attr name="preview.bottomToolbar.apply.textColor" format="reference|color" />
     <attr name="item.placeholder" format="reference|color" />
     <attr name="item.checkCircle.backgroundColor" format="reference|color" />
+    <attr name="item.checkCircle.unCheckedBackgroundColor" format="reference|color" />
     <attr name="item.checkCircle.borderColor" format="reference|color" />
     <attr name="capture.textColor" format="reference|color" />
     <!-- region 点击或者长按的按钮样式，用于拍照、录像 -->

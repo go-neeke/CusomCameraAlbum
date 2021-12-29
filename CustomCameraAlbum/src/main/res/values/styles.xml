@@ -140,6 +140,9 @@
         <item name="item.checkCircle.backgroundColor">
             @color/zaihan_item_checkCircle_backgroundColor
         </item>
+        <item name="item.checkCircle.unCheckedBackgroundColor">
+            @color/zaihan_item_unCheckCircle_backgroundColor
+        </item>
         <item name="item.checkCircle.borderColor">@color/zaihan_item_checkCircle_borderColor</item>
         <item name="page.bg">@color/zaihan_page_bg</item>
         <item name="bottomToolbar.bg">@color/zaihan_bottom_toolbar_bg</item>

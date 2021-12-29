@@ -54,7 +54,7 @@ public class CheckView extends View {
     /**
      * dp
      */
-    private static final int SIZE = 48;
+    private static final int SIZE = 30;
     /**
      * dp
      */
@@ -72,6 +72,8 @@ public class CheckView extends View {
     private int mCheckedNum;
     private Paint mStrokePaint;
     private Paint mBackgroundPaint;
+    private Paint mUnCheckedBackgroundPaint;
+
     private TextPaint mTextPaint;
     private Paint mShadowPaint;
     private Drawable mCheckDrawable;
@@ -176,10 +178,16 @@ public class CheckView extends View {
                 canvas.drawText(text, baseX, baseY, mTextPaint);
             }
         } else {
+            initBackgroundPaint();
             if (mChecked) {
-                initBackgroundPaint();
                 canvas.drawCircle((float) SIZE * mDensity / 2, (float) SIZE * mDensity / 2,
                         BG_RADIUS * mDensity, mBackgroundPaint);
+
+                mCheckDrawable.setBounds(getCheckRect());
+                mCheckDrawable.draw(canvas);
+            } else {
+                canvas.drawCircle((float) SIZE * mDensity / 2, (float) SIZE * mDensity / 2,
+                        BG_RADIUS * mDensity, mUnCheckedBackgroundPaint);
 
                 mCheckDrawable.setBounds(getCheckRect());
                 mCheckDrawable.draw(canvas);
@@ -187,7 +195,7 @@ public class CheckView extends View {
         }
 
         // enable hint
-        setAlpha(mEnabled ? 1.0f : 0.5f);
+        setAlpha(mEnabled ? 0.8f : 0.5f);
     }
 
     private void initShadowPaint() {
@@ -226,6 +234,19 @@ public class CheckView extends View {
             int color = ta.getColor(0, defaultColor);
             ta.recycle();
             mBackgroundPaint.setColor(color);
+        }
+        if (mUnCheckedBackgroundPaint == null) {
+            mUnCheckedBackgroundPaint = new Paint();
+            mUnCheckedBackgroundPaint.setAntiAlias(true);
+            mUnCheckedBackgroundPaint.setStyle(Paint.Style.FILL);
+            TypedArray ta = getContext().getTheme()
+                    .obtainStyledAttributes(new int[]{R.attr.item_checkCircle_unCheckedBackgroundColor});
+            int defaultColor = ResourcesCompat.getColor(
+                    getResources(), R.color.zaihan_item_unCheckCircle_backgroundColor,
+                    getContext().getTheme());
+            int color = ta.getColor(0, defaultColor);
+            ta.recycle();
+            mUnCheckedBackgroundPaint.setColor(color);
         }
     }
 

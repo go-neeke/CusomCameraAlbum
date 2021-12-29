@@ -23,6 +23,16 @@
         android:padding="3dp"
         android:contentDescription="@string/z_multi_library_show_thumbnails" />
 
+    <ImageView
+        android:id="@+id/expand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom|left"
+        android:background="@color/zaihan_item_unCheckCircle_backgroundColor"
+        android:src="@drawable/ic_outline_zoom_out_map_16"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"/>
+
     <com.android.customcameraalbum.album.widget.CheckView
         android:id="@+id/checkView"
         android:layout_width="wrap_content"

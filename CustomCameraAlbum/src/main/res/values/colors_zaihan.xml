@@ -25,6 +25,7 @@
 
     <color name="zaihan_item_placeholder">#EAEEF4</color>
     <color name="zaihan_item_checkCircle_backgroundColor">#D71E1E</color>
+    <color name="zaihan_item_unCheckCircle_backgroundColor">#60808080</color>
     <color name="zaihan_item_checkCircle_borderColor">#D71E1E</color>
     <color name="zaihan_capture">#424242</color>
 

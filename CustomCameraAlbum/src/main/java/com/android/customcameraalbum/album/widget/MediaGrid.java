@@ -32,6 +32,8 @@ public class MediaGrid extends SquareFrameLayout implements View.OnClickListener
      * gif标志图片
      */
     private ImageView mGifTag;
+
+    private ImageView mExpandIcon;
     /**
      * 文本的时长（类似指视频的时长）
      */
@@ -66,19 +68,20 @@ public class MediaGrid extends SquareFrameLayout implements View.OnClickListener
         mThumbnail = findViewById(R.id.media_thumbnail);
         mCheckView = findViewById(R.id.checkView);
         mGifTag = findViewById(R.id.gif);
+        mExpandIcon = findViewById(R.id.expand);
         mVideoDuration = findViewById(R.id.video_duration);
 
         mThumbnail.setOnClickListener(this);
-        mCheckView.setOnClickListener(this);
+        mExpandIcon.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         if (mListener != null) {
-            if (view == mThumbnail) {
-                // 图片的点击事件
+            if (view == mExpandIcon) {
+//                // 图片的点击事件
                 mListener.onThumbnailClicked(mThumbnail, mMedia, mPreBindInfo.mViewHolder);
-            } else if (view == mCheckView) {
+            } else if (view == mThumbnail) {
                 // 勾选的点击事件
                 mListener.onCheckViewClicked(mThumbnail, mCheckView, mMedia, mPreBindInfo.mViewHolder);
             }
